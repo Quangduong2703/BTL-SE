@@ -120,8 +120,8 @@ Supabase
 
 ## V. Thành viên nhóm
 
-| Họ tên | MSSV | Vai trò | GitHub |
-|--------|------|--------|--------|
-| ... | ... | Phân tích và phát triển hệ thống | ... |
-| ... | ... | Frontend / UI | ... |
-| ... | ... | Backend / Database | ... |
+|     Họ tên     |   MSSV   | Vai trò |     GitHub     |
+|----------------|----------|---------|----------------|
+| Vũ Quang Dương | 22010057 |   ...   | Quangduong2703 |
+| Đỗ Đức Việt    | 23010382 |   ...   |   vietdo2607   |
+| Nguyễn Văn An  | 23010906 |   ...   |  AnNguyen1203  |
