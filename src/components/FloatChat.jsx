@@ -230,6 +230,18 @@ export default function FloatChat() {
                 </div>
             </div>
 
+            <button
+                type="button"
+                className="float-chat-btn"
+                onClick={() => setIsOpen((open) => !open)}
+                aria-label={isOpen ? 'Đóng trợ lý AI' : 'Mở trợ lý AI'}
+                title={isOpen ? 'Đóng trợ lý AI' : 'Mở trợ lý AI'}
+            >
+                <div className="bot-avatar">
+                    <img src={aiImg} alt="" />
+                </div>
+            </button>
+
         </div>
     );
 }
