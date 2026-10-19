@@ -55,6 +55,10 @@ export default function Navbar() {
     }, []);
 
     const closeMenu = () => setIsMobileMenuOpen(false);
+    const openChatbot = () => {
+        closeMenu();
+        window.dispatchEvent(new CustomEvent('toggleFloatChat'));
+    };
     const isDarkMode = theme === 'dark';
     const isAuthenticated = Boolean(user?.token);
 
@@ -107,7 +111,7 @@ export default function Navbar() {
                     <Link to="/" className="mobile-nav-link" onClick={closeMenu}>Trang chủ</Link>
                     <a href="/#gioi-thieu" className="mobile-nav-link" onClick={closeMenu}>Giới thiệu</a>
                     <Link to="/dashboard/courses" className="mobile-nav-link" onClick={closeMenu}>Tài liệu</Link>
-                    <a href="/#chatbot-ai" className="mobile-nav-link" onClick={closeMenu}>Chatbot AI</a>
+                    <a href="/#chatbot-ai" className="mobile-nav-link" onClick={(event) => { event.preventDefault(); openChatbot(); }}>Chatbot AI</a>
                 </nav>
 
                 <div className="mobile-menu-actions">
@@ -147,7 +151,7 @@ export default function Navbar() {
                 <Link to="/" className="nav-link">Trang chủ</Link>
                 <a href="/#gioi-thieu" className="nav-link">Giới thiệu</a>
                 <Link to="/dashboard/courses" className="nav-link">Tài liệu</Link>
-                <a href="/#chatbot-ai" className="nav-link">Chatbot AI</a>
+                <a href="/#chatbot-ai" className="nav-link" onClick={(event) => { event.preventDefault(); openChatbot(); }}>Chatbot AI</a>
             </div>
 
             <div className="nav-right">
