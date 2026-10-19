@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="575" height="125" viewBox="0 0 575 125" fill="none">
+  <g fill="#2F9DE2" stroke="#D9F0FF" stroke-width="2">
+    <path d="M8 54C32 23 72 8 116 16C103 31 96 49 78 63C55 81 28 76 8 54Z"/>
+    <path d="M83 19C111 11 141 18 160 36C144 49 125 59 104 63C112 47 103 29 83 19Z"/>
+    <path d="M67 61C78 69 85 81 80 94C69 91 58 83 51 73C57 71 62 67 67 61Z"/>
+    <circle cx="36" cy="93" r="7"/>
+  </g>
+  <text x="177" y="88" fill="#2F9DE2" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="700" letter-spacing="1.5">VocabUp</text>
+</svg>

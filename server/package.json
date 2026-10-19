@@ -1,0 +1,43 @@
+{
+  "name": "vocabup-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "db:init": "node scripts/init-db.js",
+    "seed:external-data": "node scripts/seed-external-data.js",
+    "seed:supabase:catalog": "node scripts/seed-supabase-catalog.js",
+    "seed:users": "node scripts/create-users.js",
+    "seed:supabase": "node scripts/seed-supabase-production.js",
+    "seed:supabase:toeic": "node scripts/seed-supabase-production.js toeic",
+    "make-admin": "node scripts/make-admin.js",
+    "supabase:ensure-storage": "node scripts/ensure-supabase-storage.js",
+    "supabase:verify-schema": "node scripts/verify-supabase-schema.js",
+    "supabase:verify-data": "node scripts/verify-supabase-data.js",
+    "supabase:verify-phase-1-5": "node scripts/verify-phase-1-5.js",
+    "supabase:verify-phase-6-10": "node scripts/verify-phase-6-10.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.110.0",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "joi": "^18.2.1",
+    "jose": "^6.2.3",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.1.1",
+    "mysql2": "^3.22.3",
+    "nodemailer": "^6.9.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

@@ -1,0 +1,1652 @@
+/* ==========================================================================
+   1. KHAI BÁO FONT VÀ BIẾN (VARIABLES)
+   ========================================================================== */
+
+/* Thêm font chữ tùy chỉnh 'Feather Bold' dùng cho Tiêu đề (Heading) */
+@font-face {
+    font-family: 'Feather Bold';
+    src: url('https://db.onlinewebfonts.com/t/14936bb7a4b6575fd2eee80a3ab52cc2.woff2') format('woff2'),
+        url('https://db.onlinewebfonts.com/t/14936bb7a4b6575fd2eee80a3ab52cc2.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+#hero-section,
+#gioi-thieu,
+#tai-lieu,
+#chatbot-ai {
+    scroll-margin-top: 50px;
+}
+
+
+/* body {
+    zoom: 1.15;
+} */
+
+/* Khai báo các biến màu sắc dựa trên Style Guide để dễ dàng tái sử dụng */
+:root {
+    --green: rgb(88, 204, 2);
+    --green-hover: rgb(75, 178, 0);
+    --green-shadow: #61B800;
+    /* Màu dùng làm đổ bóng 3D cho nút xanh */
+    --blue: rgb(28, 176, 246);
+    --blue-hover: rgb(18, 155, 220);
+    --blue-shadow: #189CD8;
+    --dark-blue: rgb(16, 15, 62);
+    --gray-text: rgb(75, 75, 75);
+    --gray-light: rgb(119, 119, 119);
+    --border-color: rgb(229, 229, 229);
+    --nav-text: rgb(175, 175, 175);
+    --footer-green: #4EC604;
+    --red: #FF4B4B;
+    --orange: #FF9600;
+    --golden: #FFC800;
+
+    /* Font dự phòng trong trường hợp Nunito không load được */
+    --font-stack: 'Nunito', 'DIN Round Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ==========================================================================
+   2. THIẾT LẬP CHUNG (BASE STYLES)
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    /* Đảm bảo padding không làm tăng kích thước phần tử */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-stack);
+    color: var(--gray-text);
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    /* Giúp text hiển thị mượt mà hơn trên máy Mac */
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ==========================================================================
+   3. BỐ CỤC CHUNG & NAVBAR (LAYOUT)
+   ========================================================================== */
+.navbar {
+    position: sticky;
+    top: 0;
+    height: 64px;
+    background: #ffffff;
+    border-bottom: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 1000;
+    /* Giữ Navbar luôn nổi trên nội dung cuộn */
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.nav-logo {
+    width: 140px;
+    height: 33px;
+}
+
+.nav-divider {
+    width: 1px;
+    height: 24px;
+    background-color: var(--border-color);
+}
+
+.nav-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--nav-text);
+    font-weight: 800;
+}
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-right,
+.nav-mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-greeting {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray-text);
+    white-space: nowrap;
+}
+
+.theme-switch-btn {
+    flex: 0 0 auto;
+    aspect-ratio: 1 / 1;
+    justify-content: center;
+}
+
+.theme-switch-btn-desktop {
+    min-width: 38px !important;
+    max-width: 38px !important;
+    width: 38px !important;
+    min-height: 38px !important;
+    height: 38px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+}
+
+.theme-switch-btn-mobile {
+    display: none;
+    min-width: 36px !important;
+    max-width: 36px !important;
+    width: 36px !important;
+    min-height: 36px !important;
+    height: 36px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    border: 2px solid var(--border-color);
+    background: #fff;
+    box-shadow: 0 4px 0 var(--border-color);
+    color: var(--blue);
+    cursor: pointer;
+}
+
+.theme-switch-btn-menu {
+    justify-content: center;
+}
+
+.theme-switch-icon {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.nav-logout-btn {
+    color: var(--blue);
+}
+
+.nav-logout-btn svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+.nav-link {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--nav-text);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+/* Hiệu ứng khi di chuột (hover) vào link */
+.nav-link:hover,
+.nav-link:active {
+    color: var(--blue);
+    background-color: rgba(28, 176, 246, 0.08);
+}
+
+.hero {
+    background: linear-gradient(180deg, rgba(28, 176, 246, 0.1) 0%, rgba(255, 255, 255, 1) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px 0px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.hero h1 {
+    font-family: 'Feather Bold', var(--font-stack);
+    font-size: 70px;
+    color: var(--dark-blue);
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 16px;
+    color: var(--gray-light);
+    max-width: 600px;
+    line-height: 1.5;
+    margin-bottom: 32px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.hero-btn {
+    min-width: 172px;
+    justify-content: center;
+}
+
+/* Cấu trúc Grid cho Main Content */
+.main-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Chia 2 cột đều nhau */
+}
+
+/* Định dạng chung cho mỗi khối Panel */
+.panel {
+    padding: 36px 40px;
+    border-bottom: 2px solid var(--border-color);
+    border-right: 2px solid var(--border-color);
+}
+
+/* Bỏ viền bên phải của cột chẵn để không bị dư ra ngoài */
+.panel:nth-child(even) {
+    border-right: none;
+}
+
+/* Style cho các Tiêu đề của Panel */
+.section-label {
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--nav-text);
+    margin-bottom: 32px;
+}
+
+/* Đường gạch ngang kéo dài sau tên Panel */
+.section-label::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: var(--border-color);
+    margin-left: 16px;
+}
+
+/* Định dạng cho Panel Nền tối */
+.dark-theme {
+    background: var(--dark-blue);
+    color: white;
+}
+
+.dark-theme .section-label {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.dark-theme .section-label::after {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   4. THÀNH PHẦN (COMPONENTS)
+   ========================================================================== */
+
+/* NÚT BẤM (BUTTONS) */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 24px;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.1s ease, filter 0.1s ease;
+    border: none;
+    font-family: var(--font-stack);
+    position: relative;
+}
+
+/* Hiệu ứng ấn nút (tạo cảm giác 3D bị lún xuống) */
+.btn:active {
+    transform: translateY(4px);
+    box-shadow: none !important;
+}
+
+/* Các biến thể của nút (Primary, Secondary, Danger...) */
+.btn-primary {
+    background: var(--blue);
+    color: white;
+    box-shadow: 0 4px 0 var(--blue-shadow);
+}
+
+.btn-primary:hover {
+    filter: brightness(1.05);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--blue);
+    border: 2px solid var(--border-color);
+    box-shadow: 0 4px 0 var(--border-color);
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.btn-danger {
+    background: var(--red);
+    color: white;
+    box-shadow: 0 4px 0 #CC3C3C;
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--blue);
+    box-shadow: none;
+}
+
+.btn-ghost:hover {
+    background: rgba(88, 204, 2, 0.08);
+}
+
+.btn-ghost:active {
+    transform: none;
+    background: rgba(88, 204, 2, 0.12);
+}
+
+/* Nút nhỏ */
+.btn-small {
+    height: 36px;
+    font-size: 13px;
+    padding: 0 16px;
+    border-radius: 10px;
+}
+
+.btn-primary.btn-small,
+.btn-danger.btn-small {
+    box-shadow: 0 3px 0 var(--blue-shadow);
+}
+
+.btn-danger.btn-small {
+    box-shadow: 0 3px 0 #CC3C3C;
+}
+
+.btn-secondary.btn-small {
+    box-shadow: 0 3px 0 var(--border-color);
+}
+
+/* Trạng thái bị khóa (Disabled) */
+.btn.disabled {
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+/* Nút trên nền tối */
+.btn-dark-primary {
+    background: white;
+    color: var(--dark-blue);
+    box-shadow: 0 4px 0 #88879F;
+}
+
+.btn-dark-primary:hover {
+    background: #d2f1ff;
+}
+
+.btn-dark-primary.btn-small {
+    box-shadow: 0 3px 0 #88879F;
+}
+
+/* BẢNG MÀU (COLORS GRID) */
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 20px 12px;
+}
+
+.color-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.color-swatch {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease;
+}
+
+.color-swatch:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.color-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-text);
+}
+
+.color-hex {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gray-light);
+}
+
+/* FONT CHỮ (TYPOGRAPHY) */
+.type-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+}
+
+.type-meta {
+    width: 80px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.type-size {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--blue);
+}
+
+.type-weight {
+    font-size: 10px;
+    color: var(--nav-text);
+    margin-top: 2px;
+}
+
+.type-sample-1 {
+    font-family: 'Feather Bold', var(--font-stack);
+    font-size: 48px;
+    color: var(--blue);
+}
+
+.type-sample-2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--gray-text);
+}
+
+.type-sample-3 {
+    font-family: 'Feather Bold', var(--font-stack);
+    font-size: 28px;
+    color: var(--blue);
+    text-transform: lowercase;
+}
+
+.type-sample-4 {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gray-light);
+    line-height: 1.6;
+}
+
+.type-sample-5 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--nav-text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.type-sample-6 {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-light);
+}
+
+/* BỐ CỤC NÚT & LABEL (STACK) */
+.btn-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.btn-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-label {
+    width: 80px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--nav-text);
+    flex-shrink: 0;
+}
+
+.dark-theme .btn-label {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* THẺ NỘI DUNG (CARDS) */
+.cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.card {
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.card-img {
+    height: 120px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 16px;
+    flex: 1;
+}
+
+.card-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.tag-new {
+    color: var(--blue);
+    background: rgba(28, 176, 246, 0.1);
+}
+
+.tag-popular {
+    color: var(--blue);
+    background: rgba(28, 176, 246, 0.1);
+}
+
+.tag-super {
+    color: var(--golden);
+    background: rgba(255, 200, 0, 0.15);
+}
+
+.tag-pro {
+    color: var(--orange);
+    background: rgba(255, 150, 0, 0.15);
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gray-text);
+    margin-bottom: 4px;
+}
+
+.card-desc {
+    font-size: 13px;
+    color: var(--gray-light);
+    line-height: 1.5;
+}
+
+.card-footer {
+    border-top: 2px solid var(--border-color);
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-units {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--nav-text);
+}
+
+.card-action {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--blue);
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.card-action:hover {
+    opacity: 0.7;
+}
+
+/* THẺ DARK THEME */
+.dark-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 2px solid rgba(255, 255, 255, 0.08);
+}
+
+.dark-card .card-title {
+    color: white;
+}
+
+.dark-card .card-desc {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-card .card-footer {
+    border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-card .card-units {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* COMPONENT CHUNG */
+.comp-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.comp-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--nav-text);
+    margin-bottom: 12px;
+}
+
+.dark-theme .comp-label {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* BADGES (Nhãn dán) */
+.badge-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge-completed {
+    color: var(--blue);
+    background: rgba(28, 176, 246, 0.12);
+}
+
+.badge-progress {
+    color: var(--blue);
+    background: rgba(28, 176, 246, 0.12);
+}
+
+.badge-failed {
+    color: var(--red);
+    background: rgba(255, 75, 75, 0.12);
+}
+
+.badge-streak {
+    color: var(--orange);
+    background: rgba(255, 150, 0, 0.12);
+}
+
+.badge-premium {
+    color: #b8920f;
+    background: rgba(255, 200, 0, 0.15);
+}
+
+.badge-mastered {
+    color: #7ADB2E;
+    background: rgba(88, 204, 2, 0.15);
+}
+
+.badge-review {
+    color: #4DC4F8;
+    background: rgba(28, 176, 246, 0.15);
+}
+
+.badge-crown {
+    color: var(--golden);
+    background: rgba(255, 200, 0, 0.15);
+}
+
+/* FORM INPUT */
+.input-row {
+    display: flex;
+    gap: 12px;
+}
+
+.custom-input {
+    flex: 1;
+    height: 48px;
+    padding: 0 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font-stack);
+    outline: none;
+    transition: border-color 0.2s;
+    color: var(--gray-text);
+}
+
+.custom-input::placeholder {
+    color: var(--nav-text);
+    font-weight: 500;
+}
+
+.custom-input:focus {
+    border-color: var(--blue);
+}
+
+/* TOGGLES (Nút Gạt) */
+.toggle-row {
+    display: flex;
+    gap: 24px;
+}
+
+.toggle-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.toggle-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-text);
+}
+
+.toggle-input {
+    display: none;
+    /* Ẩn checkbox mặc định đi */
+}
+
+.toggle-track {
+    width: 48px;
+    height: 28px;
+    background: var(--border-color);
+    border-radius: 14px;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.toggle-thumb {
+    width: 22px;
+    height: 22px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+/* Khi checkbox được chọn, đổi màu track và dịch chuyển thumb */
+.toggle-input:checked+.toggle-track {
+    background: var(--blue);
+}
+
+.toggle-input:checked+.toggle-track .toggle-thumb {
+    transform: translateX(20px);
+}
+
+/* PROGRESS BARS (Thanh tiến trình) */
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.progress-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 12px;
+    background: var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.dark-theme .progress-bar {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.6s ease;
+}
+
+.progress-value {
+    width: 32px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-text);
+}
+
+.dark-theme .progress-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* TOOLTIP & STREAK */
+.interactive-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.tooltip-wrapper {
+    position: relative;
+}
+
+.tooltip-trigger {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+    background: rgba(28, 176, 246, 0.08);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.tooltip-bubble {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--dark-blue);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+}
+
+/* Tạo hình tam giác chỉ xuống cho tooltip */
+.tooltip-bubble::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px 5px 0 5px;
+    border-style: solid;
+    border-color: var(--dark-blue) transparent transparent transparent;
+}
+
+.tooltip-wrapper:hover .tooltip-bubble {
+    opacity: 1;
+    visibility: visible;
+}
+
+.streak-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: rgba(255, 150, 0, 0.1);
+    border-radius: 20px;
+}
+
+.streak-icon {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.streak-num {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--orange);
+}
+
+/* LANG PILLS (Nút chọn ngôn ngữ nền tối) */
+.lang-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.lang-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.lang-pill img {
+    width: 24px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.lang-pill:hover {
+    border-color: var(--blue);
+    background: rgba(28, 176, 246, 0.05);
+}
+
+.lang-pill.active {
+    border-color: var(--blue);
+    background: rgba(28, 176, 246, 0.08);
+    color: white;
+}
+
+/* AVATAR GROUP */
+.avatar-group-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar-group {
+    display: flex;
+}
+
+.avatar-item {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-left: -8px;
+    object-fit: cover;
+}
+
+.avatar-item:first-child {
+    margin-left: 0;
+}
+
+.avatar-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    color: var(--gray-light);
+    font-size: 11px;
+    font-weight: 800;
+    z-index: 1;
+}
+
+.avatar-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ==========================================================================
+   5. RESPONSIVE (TƯƠNG THÍCH MÀN HÌNH NHỎ)
+   ========================================================================== */
+
+@media (min-width: 1024px) {
+    .hero {
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .hero-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 12%;
+    }
+
+    .hero-left {
+        padding-left: 20%;
+        padding-right: 20%;
+        align-items: center;
+    }
+
+}
+
+@media (min-width: 1024px) {
+    .hero-buttons {
+        justify-content: flex-start;
+    }
+}
+
+/* Tablet & Màn hình vừa */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Chuyển thành 1 cột */
+    .panel {
+        border-right: none;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    /* Ẩn menu đi ở màn hình nhỏ */
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+}
+
+/* Mobile (Điện thoại) */
+@media (max-width: 600px) {
+    .hero {
+        padding: 40px 20px 124px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        text-align: center;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .panel {
+        padding: 28px 20px;
+    }
+
+    .color-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .type-meta {
+        display: none;
+    }
+
+    /* Ẩn cột thông tin font chữ */
+    .type-sample-1 {
+        font-size: 32px;
+    }
+
+    .btn-label {
+        display: none;
+    }
+
+    .input-row {
+        flex-direction: column;
+    }
+}
+
+/* ==========================================================================
+   6. FOOTER
+   ========================================================================== */
+.footer {
+    background-color: #ffffff;
+    border-top: 2px solid var(--border-color);
+    padding: 40px 40px 20px 40px;
+    margin-top: 40px;
+}
+
+.footer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    /* Chia 4 cột: Cột 1 và 4 to hơn một chút để chứa đoạn văn và Map */
+    grid-template-columns: 2.7fr 1fr 1fr 2.4fr;
+    gap: 56px;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-desc {
+    font-size: 15px;
+    color: var(--gray-light);
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.footer-heading {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--nav-text);
+    /* margin-bottom: 8px; */
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-link {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gray-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: var(--blue);
+}
+
+.map-wrapper {
+    width: 100%;
+    height: 160px;
+    border-radius: 16px;
+    border: 2px solid var(--border-color);
+    overflow: hidden;
+}
+
+/* Đảm bảo iframe tự động lấp đầy phần thẻ bọc bên ngoài thay vì dùng height/width cứng */
+.map-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.footer-bottom {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-top: 32px;
+    text-align: center;
+}
+
+.footer-bottom-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.footer-bottom p {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--nav-text);
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   FOOTER RESPONSIVE
+   ========================================================================== */
+
+/* Tablet & Màn hình vừa */
+@media (max-width: 900px) {
+    .footer-container {
+        /* Chuyển thành 2 cột 2 hàng trên Tablet */
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 24px;
+    }
+}
+
+/* Mobile (Điện thoại) */
+@media (max-width: 600px) {
+    .footer {
+        padding: 40px 20px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px 16px;
+    }
+
+    /* 1: Logo, description ở trên cùng (chiếm trọn 2 cột) */
+    .col-brand {
+        grid-column: span 2;
+    }
+
+    /* 2 & 3: Study và AI Tutor tự động nằm chung 1 hàng vì mỗi cột mặc định chiếm 1 phần */
+    .col-links {
+        grid-column: span 1;
+    }
+
+    /* 4: Bản đồ nằm riêng 1 dòng ở cuối (chiếm trọn 2 cột) */
+    .col-map {
+        grid-column: span 2;
+        margin-top: 8px;
+    }
+
+    .map-wrapper {
+        height: 200px;
+        /* Bản đồ to hơn 1 chút trên mobile cho dễ thao tác */
+    }
+
+    .footer-bottom {
+        padding-top: 24px;
+    }
+
+    .footer-bottom p {
+        font-size: 12px;
+    }
+
+    .nav-label,
+    .nav-right,
+    .nav-divider {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   MOBILE MENU - RESPONSIVE NAVIGATION
+   ========================================================================== */
+
+/* Hamburger Button - Chỉ hiện trên mobile */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1002;
+}
+
+.mobile-menu-toggle span {
+    width: 24px;
+    height: 3px;
+    background-color: var(--gray-text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Animation khi menu mở */
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Overlay (màn phủ tối khi menu mở) */
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(16, 15, 62, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1001;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Mobile Menu Sidebar */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 60%;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+    z-index: 1003;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+/* Header của Mobile Menu */
+.mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 2px solid var(--border-color);
+    max-height: 64px;
+}
+
+.mobile-menu-logo {
+    width: 140px;
+    height: auto;
+}
+
+.mobile-menu-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-text);
+    transition: color 0.2s ease;
+}
+
+.mobile-menu-close:hover {
+    color: var(--blue);
+}
+
+/* Navigation Links */
+.mobile-menu-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+}
+
+.mobile-nav-link {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gray-text);
+    text-decoration: none;
+    padding: 16px 24px;
+    transition: all 0.2s ease;
+    border-left: 4px solid transparent;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+    color: var(--blue);
+    background-color: rgba(28, 176, 246, 0.08);
+    border-left-color: var(--blue);
+}
+
+/* Action Buttons ở cuối menu */
+.mobile-menu-actions {
+    padding: 24px;
+    border-top: 2px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 128px;
+}
+
+.btn-mobile-menu {
+    width: 100%;
+    height: 48px;
+}
+
+.mobile-auth-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.mobile-auth-greeting {
+    flex: 1;
+    min-width: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gray-text);
+    line-height: 1.35;
+}
+
+/* Responsive - Hiện hamburger button trên mobile */
+@media (max-width: 900px) {
+    .nav-mobile-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    .theme-switch-btn-mobile {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .theme-switch-btn-desktop {
+        display: none;
+    }
+
+    .nav-right {
+        display: none;
+    }
+
+    .mobile-menu-actions .theme-switch-btn-menu {
+        display: none !important;
+    }
+}
+
+/* Điều chỉnh width menu trên màn hình rất nhỏ */
+@media (max-width: 600px) {
+    .mobile-menu {
+        width: 56%;
+    }
+}
+
+/* Ngăn scroll body khi menu mở */
+body.mobile-menu-open {
+    overflow: hidden;
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .topbar-hamburger {
+        display: none;
+    }
+
+    .welcome-pill-row {
+        display: none;
+    }
+
+    .welcome-pill-row,
+    .chart-summary {
+        display: none;
+    }
+
+    .topbar-xp {
+        display: none;
+    }
+}
+
+body.app-dark-mode {
+    --gray-text: #e2e8f0;
+    --gray-light: #a7b4c7;
+    --border-color: rgba(148, 163, 184, .2);
+    --nav-text: #a7b4c7;
+    background-color: #1a2233;
+    color: var(--gray-text);
+}
+
+body.app-dark-mode .navbar,
+body.app-dark-mode .footer,
+body.app-dark-mode .hero,
+body.app-dark-mode .section,
+body.app-dark-mode .feature-card,
+body.app-dark-mode .testimonial-card,
+body.app-dark-mode .pricing-card,
+body.app-dark-mode .auth-container,
+body.app-dark-mode .auth-card,
+body.app-dark-mode .login-card,
+body.app-dark-mode .register-card,
+body.app-dark-mode .content-card {
+    background: #243047;
+    color: var(--gray-text);
+    border-color: rgba(148, 163, 184, .18);
+}
+
+body.app-dark-mode .navbar {
+    background: rgba(26, 34, 51, .96);
+}
+
+body.app-dark-mode .navbar {
+    background: rgba(9, 14, 24, .82);
+    border-bottom-color: rgba(148, 163, 184, .16);
+    box-shadow: 0 8px 24px rgba(2, 6, 23, .24);
+    backdrop-filter: blur(10px);
+}
+
+body.app-dark-mode .hero {
+    background: linear-gradient(180deg, rgba(28, 176, 246, 0.12) 0%, #0f172a 100%);
+    border-bottom-color: rgba(148, 163, 184, .16);
+}
+
+body.app-dark-mode .footer {
+    background: #0b1220;
+    border-top-color: rgba(148, 163, 184, .16);
+}
+
+body.app-dark-mode .map-wrapper {
+    border-color: rgba(148, 163, 184, .16);
+    box-shadow: 0 10px 26px rgba(2, 6, 23, .2);
+}
+
+body.app-dark-mode .mobile-menu-overlay {
+    background: rgba(2, 6, 23, 0.62);
+}
+
+body.app-dark-mode .mobile-menu {
+    background: #0f172a;
+    box-shadow: -10px 0 32px rgba(2, 6, 23, 0.34);
+}
+
+body.app-dark-mode .mobile-menu-header,
+body.app-dark-mode .mobile-menu-actions {
+    border-color: rgba(148, 163, 184, .16);
+}
+
+body.app-dark-mode .theme-switch-btn-mobile,
+body.app-dark-mode .theme-switch-btn-desktop,
+body.app-dark-mode .theme-switch-btn-menu {
+    background: rgba(15, 23, 42, .72);
+    border-color: rgba(148, 163, 184, .18);
+    box-shadow: 0 4px 0 rgba(15, 23, 42, .9);
+    color: #7dd3fc;
+}
+
+body.app-dark-mode .nav-greeting,
+body.app-dark-mode .mobile-auth-greeting,
+body.app-dark-mode .nav-logout-btn {
+    color: #e2e8f0;
+}
+
+body.app-dark-mode .theme-switch-btn-mobile:hover,
+body.app-dark-mode .theme-switch-btn-desktop:hover,
+body.app-dark-mode .theme-switch-btn-menu:hover {
+    background: rgba(24, 34, 53, .96);
+}
+
+body.app-dark-mode .btn-secondary {
+    background: rgba(15, 23, 42, .72);
+    border-color: rgba(148, 163, 184, .18);
+    box-shadow: 0 4px 0 rgba(15, 23, 42, .9);
+}
+
+body.app-dark-mode .btn-secondary:hover {
+    background: rgba(24, 34, 53, .96);
+}
+
+body.app-dark-mode .nav-link,
+body.app-dark-mode .nav-label,
+body.app-dark-mode h1,
+body.app-dark-mode h2,
+body.app-dark-mode h3,
+body.app-dark-mode p,
+body.app-dark-mode label,
+body.app-dark-mode span,
+body.app-dark-mode .hero-title,
+body.app-dark-mode .hero-subtitle,
+body.app-dark-mode .section-title,
+body.app-dark-mode .section-subtitle {
+    color: inherit;
+}
+
+body.app-dark-mode input,
+body.app-dark-mode textarea,
+body.app-dark-mode select {
+    background: #202b3f;
+    color: var(--gray-text);
+    border-color: rgba(148, 163, 184, .18);
+}

@@ -1,0 +1,449 @@
+
+
+
+:root {
+    --green: rgb(88, 204, 2);
+    --green-hover: rgb(75, 178, 0);
+    --green-shadow: #61B800;
+    --blue: rgb(28, 176, 246);
+    --blue-hover: rgb(18, 155, 220);
+    --blue-shadow: #189CD8;
+    --dark-blue: rgb(16, 15, 62);
+    --gray-text: rgb(75, 75, 75);
+    --gray-light: rgb(119, 119, 119);
+    --border-color: rgb(229, 229, 229);
+    --nav-text: rgb(175, 175, 175);
+    --red: #FF4B4B;
+    --orange: #FF9600;
+    --golden: #FFC800;
+    --bg-page: #f6f7fb;
+    --sidebar-w: 220px;
+    --topbar-h: 64px;
+    --font-stack: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --shadow-card: 0 4px 24px rgba(0, 0, 0, .07);
+    --shadow-hover: 0 12px 40px rgba(0, 0, 0, .13);
+}
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-stack);
+    background: var(--bg-page);
+    color: var(--gray-text);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+body.app-dark-mode {
+    --gray-text: #e2e8f0;
+    --gray-light: #a7b4c7;
+    --border-color: rgba(148, 163, 184, .2);
+    --nav-text: #a7b4c7;
+    --bg-page: #1a2233;
+    --shadow-card: 0 18px 40px rgba(2, 6, 23, .35);
+    --shadow-hover: 0 20px 52px rgba(2, 6, 23, .45);
+    background: var(--bg-page);
+    color: var(--gray-text);
+}
+
+body.app-dark-mode .sidebar,
+body.app-dark-mode .topbar,
+body.app-dark-mode .chart-card,
+body.app-dark-mode .today-card,
+body.app-dark-mode .course-dash-card,
+body.app-dark-mode .cv-topic-card,
+body.app-dark-mode .cv-word-table,
+body.app-dark-mode .cv-word-row,
+body.app-dark-mode .coming-soon-wrapper,
+body.app-dark-mode .settings2-card,
+body.app-dark-mode .stats2-board,
+body.app-dark-mode .stats2-history-item,
+body.app-dark-mode .settings2-modal,
+body.app-dark-mode .courses-banner,
+body.app-dark-mode .welcome-pill,
+body.app-dark-mode .welcome-focus-card {
+    background-color: #243047;
+    border-color: rgba(148, 163, 184, .18);
+    box-shadow: 0 18px 40px rgba(2, 6, 23, .28);
+}
+
+body.app-dark-mode .topbar,
+body.app-dark-mode .sidebar {
+    background: rgba(26, 34, 51, .96);
+}
+
+body.app-dark-mode .search-input,
+body.app-dark-mode .sidebar-link,
+body.app-dark-mode .course-dash-name,
+body.app-dark-mode .course-dash-desc,
+body.app-dark-mode .card-title-text,
+body.app-dark-mode .card-eyebrow,
+body.app-dark-mode .chart-summary-card span,
+body.app-dark-mode .chart-summary-card strong,
+body.app-dark-mode .task-info strong,
+body.app-dark-mode .task-info span,
+body.app-dark-mode .section-header-dash h2,
+body.app-dark-mode .sidebar-user-info strong,
+body.app-dark-mode .topbar-greeting strong,
+body.app-dark-mode .cv-topic-name,
+body.app-dark-mode .cv-topic-desc,
+body.app-dark-mode .cv-section-title,
+body.app-dark-mode .cv-word-text,
+body.app-dark-mode .cv-mean,
+body.app-dark-mode .cv-example,
+body.app-dark-mode .cs-title,
+body.app-dark-mode .cs-sub {
+    color: var(--gray-text);
+}
+
+body.app-dark-mode .topbar-search,
+body.app-dark-mode .sidebar-user,
+body.app-dark-mode .chart-summary-card,
+body.app-dark-mode .today-progress-bar,
+body.app-dark-mode .cv-stats-bar,
+body.app-dark-mode .cv-word-table-head,
+body.app-dark-mode .settings2-action,
+body.app-dark-mode .settings2-role-card {
+    background: #202b3f;
+    border-color: rgba(148, 163, 184, .18);
+}
+
+body.app-dark-mode .btn-secondary {
+    background: #243047;
+    color: #dbeafe;
+    border-color: rgba(148, 163, 184, .2);
+    box-shadow: 0 4px 0 rgba(21, 29, 43, .9);
+}
+
+body.app-dark-mode .btn-secondary:hover {
+    background: #2b3850;
+}
+
+body.app-dark-mode .welcome-actions .btn-secondary {
+    background: linear-gradient(180deg, #2a3850, #243047);
+    color: #f8fbff;
+    border-color: rgba(148, 163, 184, .28);
+    box-shadow: 0 4px 0 rgba(15, 23, 42, .92);
+}
+
+body.app-dark-mode .welcome-actions .btn-secondary:hover {
+    background: linear-gradient(180deg, #33445f, #2a3850);
+}
+
+body.app-dark-mode .chart-tab.active {
+    background: #243047;
+    color: #e2e8f0;
+    box-shadow: inset 0 0 0 1px rgba(148, 163, 184, .18), 0 1px 4px rgba(2, 6, 23, .28);
+}
+
+body.app-dark-mode .course-dash-top {
+    filter: none;
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+
+body.app-dark-mode .course-dash-top-english {
+    background: linear-gradient(135deg, #1f3a5b, #2b527c);
+}
+
+body.app-dark-mode .course-dash-top-custom {
+    background: linear-gradient(135deg, #3b2854, #5a3b7c);
+}
+
+body.app-dark-mode .course-dash-top-english .course-flag {
+    color: #dbeafe;
+}
+
+body.app-dark-mode .course-dash-top-custom .course-flag {
+    color: #f3e8ff;
+}
+
+body.app-dark-mode .welcome-focus-card-level {
+    background: linear-gradient(135deg, rgba(139, 92, 246, .18), rgba(59, 130, 246, .16));
+    border-color: rgba(139, 92, 246, .32);
+}
+
+body.app-dark-mode .welcome-focus-card-alert {
+    background: linear-gradient(135deg, rgba(127, 29, 29, .42), rgba(69, 10, 10, .28));
+    border-color: rgba(248, 113, 113, .32);
+}
+
+body.app-dark-mode .welcome-focus-card-srs {
+    background: linear-gradient(135deg, rgba(120, 53, 15, .38), rgba(92, 39, 12, .24));
+    border-color: rgba(251, 191, 36, .28);
+}
+
+body.app-dark-mode .welcome-focus-heading-alert,
+body.app-dark-mode .welcome-focus-link-alert {
+    color: #fca5a5;
+}
+
+body.app-dark-mode .welcome-focus-heading-srs {
+    color: #fcd34d;
+}
+
+body.app-dark-mode .lang-tabs {
+    background: #202b3f;
+    border-color: rgba(148, 163, 184, .18);
+    box-shadow: 0 12px 28px rgba(2, 6, 23, .22);
+}
+
+body.app-dark-mode .doc-card,
+body.app-dark-mode .doc-card.cv-custom-card {
+    background: #243047;
+    border-color: rgba(148, 163, 184, .18);
+    box-shadow: 0 16px 36px rgba(2, 6, 23, .22);
+}
+
+body.app-dark-mode .doc-card:hover {
+    border-color: rgba(96, 165, 250, .3);
+}
+
+body.app-dark-mode .mobile-nav {
+    background: rgba(26, 34, 51, .96);
+    border-top-color: rgba(148, 163, 184, .18);
+    box-shadow: 0 -8px 24px rgba(2, 6, 23, .35);
+}
+
+body.app-dark-mode .mobile-nav-item {
+    color: var(--gray-light);
+}
+
+body.app-dark-mode .mobile-nav-item.active {
+    color: #7dd3fc;
+}
+
+body.app-dark-mode .course-flag {
+    color: #dbeafe;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: var(--font-stack);
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+
+
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 24px;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background .1s, filter .1s, transform .1s;
+    border: none;
+    font-family: var(--font-stack);
+    letter-spacing: .3px;
+    white-space: nowrap;
+}
+
+.btn:active {
+    transform: translateY(3px);
+    box-shadow: none !important;
+}
+
+
+.btn-primary {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 0 var(--blue-shadow);
+}
+
+.btn-primary:hover {
+    filter: brightness(1.06);
+}
+
+.btn-secondary {
+    background: #fff;
+    color: var(--blue);
+    border: 2px solid var(--border-color);
+    box-shadow: 0 4px 0 var(--border-color);
+    min-width: 175px;
+    width: auto;
+}
+
+.btn-secondary:hover {
+    
+    background: #fff;
+}
+
+.btn-small {
+    height: 40px;
+    font-size: 13px;
+    padding: 0 14px;
+    border-radius: 10px;
+}
+
+.course-dash-footer>.btn-small {
+    height: 40px;
+    width: 100%;
+    font-size: 13px;
+    padding: 0 14px;
+    border-radius: 10px;
+}
+
+.btn-large {
+    
+    font-size: 16px;
+    padding: 0 32px;
+    border-radius: 14px;
+}
+
+.btn-primary.btn-large {
+    min-width: 175px;
+    box-shadow: 0 5px 0 var(--blue-shadow);
+}
+
+.btn-primary.btn-small {
+    box-shadow: 0 3px 0 var(--blue-shadow);
+}
+
+.btn-secondary.btn-small {
+    min-width: 0;
+    width: auto;
+    padding: 0 12px;
+    box-shadow: 0 3px 0 var(--border-color);
+}
+
+
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.badge-completed {
+    color: var(--green);
+    background: rgba(88, 204, 2, .12);
+}
+
+.badge-progress {
+    color: var(--blue);
+    background: rgba(28, 176, 246, .12);
+}
+
+.badge-failed {
+    color: var(--red);
+    background: rgba(255, 75, 75, .12);
+}
+
+.badge-streak {
+    color: var(--orange);
+    background: rgba(255, 150, 0, .12);
+}
+
+.badge-premium {
+    color: #b8920f;
+    background: rgba(255, 200, 0, .15);
+}
+
+.badge-review {
+    color: #4DC4F8;
+    background: rgba(28, 176, 246, .15);
+}
+
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width .8s cubic-bezier(.4, 0, .2, 1);
+}
+
+
+.course-dash-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.tag-new {
+    color: var(--green);
+    background: rgba(88, 204, 2, .10);
+}
+
+.tag-popular {
+    color: var(--blue);
+    background: rgba(28, 176, 246, .10);
+}
+
+.tag-super {
+    color: var(--golden);
+    background: rgba(255, 200, 0, .15);
+}
+
+
+.reveal {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-distance, 28px), 0) scale(var(--reveal-scale, .98));
+    filter: blur(var(--reveal-blur, 0px));
+    transition:
+        opacity .55s ease var(--reveal-delay, 0ms),
+        transform .7s cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms),
+        filter .55s ease var(--reveal-delay, 0ms);
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+}
+
+.welcome-banner.reveal {
+    --reveal-distance: 40px;
+    --reveal-scale: .97;
+    --reveal-blur: 10px;
+}
+
+.chart-card.reveal,
+.today-card.reveal {
+    --reveal-distance: 24px;
+    --reveal-scale: .985;
+    --reveal-blur: 6px;
+}

@@ -1,0 +1,428 @@
+@media (max-width: 1200px) {
+    .courses-grid-dash {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+
+@media (max-width: 1024px) {
+    :root {
+        --sidebar-w: 196px;
+    }
+
+    .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mid-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-banner {
+        padding: 28px 28px;
+    }
+
+    .welcome-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-text {
+        max-width: none;
+    }
+}
+
+
+
+@media (max-width: 900px) {
+
+
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 4px 0 24px rgba(0, 0, 0, .15);
+    }
+
+    .dashboard-main-wrapper {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .topbar-hamburger {
+        display: none !important;
+    }
+
+    .topbar-greeting {
+        display: none;
+    }
+
+    .topbar-logo {
+        display: flex !important;
+    }
+
+    .topbar {
+        padding: 0 20px;
+        gap: 12px;
+    }
+
+    .topbar-search {
+        max-width: none;
+        flex: 1;
+    }
+
+    .mobile-nav {
+        display: flex;
+
+    }
+
+    .dash-main {
+        padding-bottom: 90px;
+    }
+
+    .courses-grid-dash {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .bottom-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+@media (max-width: 640px) {
+    .dash-main {
+        padding: 16px 16px 90px;
+        gap: 16px;
+    }
+
+    .topbar {
+        padding: 0 16px;
+        height: 64px;
+        gap: 10px;
+    }
+
+    .topbar-search {
+        display: none;
+    }
+
+    .welcome-banner {
+        padding: 24px 20px;
+        border-radius: var(--radius-md);
+    }
+
+    .welcome-pill-row {
+        display: none;
+    }
+
+    .chart-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-title {
+        font-size: 22px;
+    }
+
+    .welcome-sub {
+        font-size: 13px;
+    }
+
+    .welcome-actions {
+        flex-direction: row;
+    }
+
+    .welcome-actions>a {
+        width: calc(50% - 6px);
+    }
+
+    .welcome-actions>a>.btn {
+        min-width: 0;
+    }
+
+    .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 16px;
+        gap: 8px;
+    }
+
+    .stat-card-val {
+        font-size: 22px;
+    }
+
+    .courses-grid-dash {
+        grid-template-columns: 1fr;
+    }
+
+    .mid-grid {
+        gap: 14px;
+    }
+
+    .chart-card,
+    .today-card,
+    .review-card-section,
+    .achievements-card {
+        padding: 18px 16px;
+    }
+
+    .card-title-text {
+        font-size: 16px;
+    }
+
+    .typing-tool-row,
+    .typing-actions {
+        grid-template-rows: 1fr;
+        gap: 10px;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    :root {
+        --topbar-h: 56px;
+    }
+
+    .dash-main {
+        padding: 12px 12px 86px;
+        gap: 14px;
+        margin-bottom: 50px;
+    }
+
+    .welcome-banner {
+        padding: 18px 16px;
+        border-radius: var(--radius-sm);
+    }
+
+    .welcome-panel {
+        gap: 10px;
+    }
+
+    .welcome-pill,
+    .welcome-focus-card {
+        border-radius: 14px;
+    }
+
+    .welcome-eyebrow {
+        font-size: 11px;
+    }
+
+    .welcome-title {
+        font-size: 19px;
+        margin-bottom: 8px;
+    }
+
+    .welcome-sub {
+        font-size: 13px;
+        margin-bottom: 16px;
+    }
+
+    .welcome-actions {
+        gap: 12px;
+    }
+
+    .welcome-actions>a {
+        width: calc(50% - 6px);
+    }
+
+    .welcome-actions>a>.btn {
+        min-width: 0;
+    }
+
+    .btn-large {
+        height: 48px;
+        font-size: 14px;
+        border-radius: 12px;
+    }
+
+    .stats-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .flashcard-header h2 {
+        display: none;
+    }
+
+    .flashcard-header {
+        gap: 0px;
+    }
+
+    .cv-breadcrumb-btn {
+        max-width: 175px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .stat-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 12px;
+        gap: 6px;
+    }
+
+    .stat-card-val {
+        font-size: 20px;
+    }
+
+    .stat-card-label {
+        font-size: 11px;
+    }
+
+    .stat-card-trend {
+        font-size: 11px;
+        align-self: flex-end;
+    }
+
+    .chart-card,
+    .today-card,
+    .review-card-section,
+    .achievements-card {
+        padding: 14px 12px;
+        border-radius: var(--radius-sm);
+    }
+
+    .card-eyebrow {
+        font-size: 10px;
+    }
+
+    .card-title-text {
+        font-size: 15px;
+    }
+
+    .card-header {
+        margin-bottom: 14px;
+    }
+
+    .today-progress {
+        margin-bottom: 12px;
+    }
+
+    .chart-tabs {
+        display: none;
+    }
+
+    .task-item {
+        padding: 8px 10px;
+        gap: 8px;
+    }
+
+    .task-info strong {
+        font-size: 12px;
+    }
+
+    .task-item .btn {
+        padding: 0 10px;
+        font-size: 11px;
+        height: 42px;
+        max-width: 120px;
+        border-radius: 8px;
+    }
+
+    .course-dash-card {
+        border-radius: var(--radius-sm);
+    }
+
+    .course-dash-top {
+        height: 60px;
+        padding: 0 14px;
+    }
+
+    .course-flag {
+        font-size: 18px;
+    }
+
+    .course-dash-body {
+        padding: 12px 14px;
+    }
+
+    .course-dash-name {
+        font-size: 14px;
+    }
+
+    .course-dash-desc {
+        font-size: 12px;
+    }
+
+    .course-dash-meta {
+        font-size: 11px;
+        gap: 6px;
+    }
+
+    .course-dash-footer {
+        padding: 10px 14px;
+    }
+
+    .course-streak-info {
+        font-size: 11px;
+    }
+
+    .review-word-item {
+        padding: 8px 10px;
+    }
+
+    .rw-word {
+        font-size: 13px;
+    }
+
+    .rw-meaning {
+        font-size: 11px;
+    }
+
+    .achievement-item {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .ach-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 17px;
+    }
+
+    .ach-info strong {
+        font-size: 12px;
+    }
+
+    .ach-info span {
+        font-size: 11px;
+    }
+
+    .mobile-nav {
+        height: 72px;
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+    }
+
+    .mobile-nav-item {
+        font-size: 9px;
+        gap: 2px;
+    }
+
+    .sidebar {
+        width: 80vw;
+        max-width: 260px;
+    }
+
+    .btn-small {
+        height: 40px;
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    .badge {
+        font-size: 10px;
+        padding: 3px 7px;
+    }
+
+    .topbar-logo {
+        display: flex !important;
+    }
+
+}

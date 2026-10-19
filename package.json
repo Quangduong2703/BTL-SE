@@ -1,0 +1,49 @@
+{
+  "name": "vocabup-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start:all": "powershell -ExecutionPolicy Bypass -File scripts/run-vocabup.ps1",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "seed:supabase:toeic": "node server/scripts/seed-supabase-production.js toeic",
+    "seed:supabase:public": "node server/scripts/seed-supabase-production.js public"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.110.0",
+    "axios": "^1.16.1",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "highlight.js": "^11.11.1",
+    "express": "^5.2.1",
+    "joi": "^18.2.1",
+    "jose": "^6.2.3",
+    "jsonwebtoken": "^9.0.3",
+    "jszip": "^3.10.1",
+    "marked": "^18.0.2",
+    "pdfjs-dist": "^6.0.227",
+    "multer": "^2.1.1",
+    "mysql2": "^3.22.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router-dom": "^7.14.1",
+    "nodemailer": "^6.9.5",
+    "tesseract.js": "^7.0.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "vite": "^8.0.4"
+  }
+}
