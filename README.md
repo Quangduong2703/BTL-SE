@@ -120,8 +120,8 @@ Supabase
 
 ## V. Thành viên nhóm
 
-|     Họ tên     |   MSSV   | Vai trò |     GitHub     |
-|----------------|----------|---------|----------------|
-| Vũ Quang Dương | 22010057 |   ...   | Quangduong2703 |
-| Đỗ Đức Việt    | 23010382 |   ...   |   vietdo2607   |
-| Nguyễn Văn An  | 23010906 |   ...   |  AnNguyen1203  |
+|     Họ tên     |   MSSV   |             Vai trò             |     GitHub     |
+|----------------|----------|---------------------------------|----------------|
+| Vũ Quang Dương | 22010057 |   Project Maneger, Designer     | Quangduong2703 |
+| Đỗ Đức Việt    | 23010382 | User Research, Writer, Designer |   vietdo2607   |
+| Nguyễn Văn An  | 23010906 |  Writer, Designer, Storyboading |  AnNguyen1203  |
